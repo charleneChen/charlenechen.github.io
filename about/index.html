@@ -15,16 +15,13 @@
 
 
 
-<meta name="description" content="A place to share ideas">
 <meta property="og:type" content="website">
 <meta property="og:title" content="about">
 <meta property="og:url" content="https://charlenechen.github.io/about/index.html">
 <meta property="og:site_name" content="Female Developer">
-<meta property="og:description" content="A place to share ideas">
-<meta property="og:updated_time" content="2016-09-04T13:04:19.000Z">
+<meta property="og:updated_time" content="2016-09-04T13:13:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="about">
-<meta name="twitter:description" content="A place to share ideas">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -72,7 +69,7 @@
         isCategory: false,
         fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
         scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
-        search: undefined
+        search: true
     }
 </script>
 
@@ -106,6 +103,13 @@
         <p class="header-subtitle">It is not just a blog</p>
         
 
+        
+            <form id="search-form">
+            <input type="text" id="local-search-input" name="q" placeholder="search..." class="search form-control" autocomplete="off" autocorrect="off" searchonload="false" />
+            <i class="fa fa-times" onclick="resetSearch()"></i>
+            </form>
+            <div id="local-search-result"></div>
+            <p class='no-result'>No results found <i class='fa fa-spinner fa-pulse'></i></p>
         
 
 
@@ -172,9 +176,11 @@
                             
                                 <a class="fa Email" href="mailto:123@123.com" title="Email"></a>
                             
-                                <a class="fa GitHub" href="#" title="GitHub"></a>
+                                <a class="fa GitHub" href="https://github.com/charleneChen" title="GitHub"></a>
                             
                                 <a class="fa RSS" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 豆瓣" href="https://www.douban.com/" title="豆瓣"></a>
                             
                         </ul>
                     </nav>
@@ -250,9 +256,11 @@
                             
                                 <a class="fa Email" target="_blank" href="mailto:123@123.com" title="Email"></a>
                             
-                                <a class="fa GitHub" target="_blank" href="#" title="GitHub"></a>
+                                <a class="fa GitHub" target="_blank" href="https://github.com/charleneChen" title="GitHub"></a>
                             
                                 <a class="fa RSS" target="_blank" href="/atom.xml" title="RSS"></a>
+                            
+                                <a class="fa 豆瓣" target="_blank" href="https://www.douban.com/" title="豆瓣"></a>
                             
                         </ul>
             </nav>
@@ -315,7 +323,7 @@
 
 
           
-        
+        <a id="more"></a>
       
     </div>
     
