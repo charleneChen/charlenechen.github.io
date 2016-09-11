@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Redmine 右键菜单 context_menu 的一个样式 bug | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="在开发 Redmine 期间，发现前端的一个样式 bug。如果显示器屏幕较小的话，在某些条件下，右键菜单的二级菜单最上部会被页面遮盖。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redmine 右键菜单 context_menu 的一个样式 bug">
+<meta property="og:url" content="https://charlenechen.github.io/2016/09/04/1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="在开发 Redmine 期间，发现前端的一个样式 bug。如果显示器屏幕较小的话，在某些条件下，右键菜单的二级菜单最上部会被页面遮盖。">
+<meta property="og:image" content="https://charlenechen.github.io/images/content_menu_bug.png">
+<meta property="og:updated_time" content="2016-09-11T12:04:25.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Redmine 右键菜单 context_menu 的一个样式 bug">
+<meta name="twitter:description" content="在开发 Redmine 期间，发现前端的一个样式 bug。如果显示器屏幕较小的话，在某些条件下，右键菜单的二级菜单最上部会被页面遮盖。">
+<meta name="twitter:image" content="https://charlenechen.github.io/images/content_menu_bug.png">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <!--
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    -->
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Søk"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://charlenechen.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/04/1/" class="article-date">
+  <time datetime="2016-09-04T10:24:51.000Z" itemprop="datePublished">2016-09-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Redmine 右键菜单 context_menu 的一个样式 bug
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>在开发 Redmine 期间，发现前端的一个样式 bug。<br>如果显示器屏幕较小的话，在某些条件下，右键菜单的二级菜单最上部会被页面遮盖。<br><a id="more"></a></p>
+<p>具体请参考下面的图片：</p>
+<p><img src="/images/content_menu_bug.png" alt="content_menu_bug"></p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><p>通过 Chrome 的 developer tool 查看，可以知道：解决这个小 bug 只需要把样式稍微调换一下就可以了。</p>
+<p>之前的样式为：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// redmine 的 root 目录下 public/stylesheets/context_menu.css</div><div class="line"></div><div class="line">#context_menu.reverse-y li.folder&gt;ul &#123;</div><div class="line">top: auto;</div><div class="line">bottom: 0;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>修改后的样式为：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// redmine 的 root 目录下 public/stylesheets/context_menu.css</div><div class="line"></div><div class="line">#context_menu.reverse-y li.folder&gt;ul &#123;</div><div class="line">top: 0;</div><div class="line">bottom: auto;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://charlenechen.github.io/2016/09/04/1/" data-id="cisynh5g20000dqw4xsl85rik" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+  
+</article>
+
+</section>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Charlene Chen
+      &nbsp;
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
